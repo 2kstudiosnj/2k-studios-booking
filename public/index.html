@@ -463,9 +463,14 @@
       }
 
       .gallery-grid img {
-        height: 300px;
-      }
-
+       width: 100%;
+       max-height: 420px;
+       object-fit: contain;
+       border-radius: 20px;
+       border: 1px solid rgba(255,255,255,0.05);
+       box-shadow: var(--shadow);
+       background: #0b0b0b;
+       }
       .about-copy,
       .cta,
       .contact-card {
@@ -532,7 +537,7 @@
         </div>
 
         <div class="hero-card">
-          <img src="images/hero.jpg" alt="Featured 2K Studios portrait" />
+          <img src="images/hero.jpeg" alt="Featured 2K Studios portrait" />
           <div class="hero-badge">
             <strong>Signature Luxury Portraits</strong>
             <span>Styled sessions designed to make every image unforgettable.</span>
@@ -544,7 +549,7 @@
     <section id="about">
       <div class="container about">
         <div class="about-photo">
-          <img src="images/about.jpg" alt="2K Studios featured portrait" />
+          <img src="images/about.jpeg" alt="2K Studios featured portrait" />
         </div>
 
         <div class="about-copy">
