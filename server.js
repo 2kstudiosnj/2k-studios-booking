@@ -7,6 +7,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
+app.use(express.static("public"));
 const PORT = process.env.PORT || 3000;
 
 const __filename = fileURLToPath(import.meta.url);
