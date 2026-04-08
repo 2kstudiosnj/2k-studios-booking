@@ -133,8 +133,8 @@ app.post("/api/create-checkout-session", async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      success_url: `${SITE_URL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/cancel.html`,
+      success_url: `${process.env.SITE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.SITE_URL}/cancel`,
       payment_method_types: ["card"],
       customer_email: email,
       metadata: {
@@ -228,7 +228,14 @@ app.post("/webhook", async (req, res) => {
 app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+app.get("/success", (req, res) => {
+  const sessionId = req.query.session_id;
+  res.send(`Pago exitoso ✅ ID: ${sessionId}`);
+});
 
+app.get("/cancel", (req, res) => {
+  res.send("Pago cancelado ❌");
+});
 app.listen(PORT, () => {
   console.log(`2K STUDIOS booking app running on port ${PORT}`);
 });
