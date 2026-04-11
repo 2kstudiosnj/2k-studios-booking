@@ -763,5 +763,32 @@
       <p>© 2025 2K STUDIOS. All rights reserved.</p>
     </div>
   </footer>
+  <script>
+document.getElementById("booking-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const data = {
+    service: document.getElementById("service").value,
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    date: document.getElementById("date").value,
+    time: document.getElementById("time").value
+  };
+
+  const res = await fetch("/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+
+  if (result.url) {
+    window.location.href = result.url;
+  } else {
+    alert("Error starting booking");
+  }
+});
+</script>
 </body>
 </html>
