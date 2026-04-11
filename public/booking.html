@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Session | 2K STUDIOS</title>
+  <meta
+    name="description"
+    content="Reserve your 2K Studios session and continue to deposit checkout."
+  />
+  <style>
+    :root {
+      --bg: #080808;
+      --card: #141414;
+      --gold: #d6a85f;
+      --gold-soft: #f0d29a;
+      --text: #f7f3eb;
+      --muted: #b7b0a3;
+      --line: rgba(214, 168, 95, 0.22);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(214, 168, 95, 0.12), transparent 30%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .top a {
+      color: var(--gold-soft);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #0b0b0b;
+    }
+
+    .brand strong {
+      letter-spacing: 0.12em;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .intro {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 16px;
+    }
+
+    input,
+    select {
+      background: #0f0f0f;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--gold);
+    }
+
+    button {
+      background: linear-gradient(135deg, #f3d59f, #c38b38);
+      color: #111;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(195, 139, 56, 0.28);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .note,
+    #status {
+      color: var(--gold-soft);
+      font-size: 0.95rem;
+    }
+
+    .policy {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .grid-2,
+      .top {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a href="/">← Back to Home</a>
+      <div class="brand">
+        <img src="images/logo.PNG" alt="2K Studios logo" />
+        <strong>2K STUDIOS</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1>Book Your Session</h1>
+      <p class="intro">
+        Fill out your information below to continue to the deposit and secure your date.
+      </p>
+
+      <form id="booking-form">
+        <div>
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="">Select a service</option>
+            <option value="Wedding - The Premium">Wedding - The Premium</option>
+            <option value="Wedding - The Basics">Wedding - The Basics</option>
+            <option value="4 Outfits Studio Package">4 Outfits Studio Package</option>
+            <option value="Graduation Package">Graduation Package</option>
+            <option value="Beauty / Headshots">Beauty / Headshots</option>
+            <option value="Couples Package">Couples Package</option>
+            <option value="Portrait Session">Portrait Session</option>
+            <option value="Family Session">Family Session</option>
+            <option value="Maternity Session">Maternity Session</option>
+          </select>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required />
+          </div>
+
+          <div>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" required />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <div>
+            <label for="date">Date</label>
+            <input type="date" id="date" required />
+          </div>
+        </div>
+
+        <div>
+          <label for="time">Time</label>
+          <select id="time" required>
+            <option value="">Select a time</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:00">3:00 PM</option>
+            <option value="16:00">4:00 PM</option>
+            <option value="17:00">5:00 PM</option>
+          </select>
+        </div>
+
+        <button type="submit">Continue to Deposit</button>
+        <div id="status"></div>
+        <p class="policy">
+          A deposit is required to secure your appointment.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("booking-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const service = document.getElementById("service").value;
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const status = document.getElementById("status");
+
+      if (!service || !name || !email || !phone || !date || !time) {
+        status.textContent = "Please complete all fields.";
+        return;
+      }
+
+      const hour = Number(time.split(":")[0]);
+      const start = new Date(`${date}T00:00:00`);
+      start.setHours(hour, 0, 0, 0);
+
+      const end = new Date(start);
+      end.setHours(start.getHours() + 1);
+
+      const slotStartISO = start.toISOString();
+      const slotEndISO = end.toISOString();
+
+      status.textContent = "Starting checkout...";
+
+      try {
+        const res = await fetch("/api/create-checkout-session", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            service,
+            name,
+            email,
+            phone,
+            date,
+            slotStartISO,
+            slotEndISO
+          })
+        });
+
+        const result = await res.json();
+
+        if (result.url) {
+          window.location.href = result.url;
+        } else {
+          status.textContent = result.error || "Could not start checkout.";
+        }
+      } catch (error) {
+        status.textContent = "Something went wrong. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
