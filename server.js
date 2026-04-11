@@ -228,13 +228,12 @@ app.post("/webhook", async (req, res) => {
 app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-app.get("/success", (req, res) => {
-  const sessionId = req.query.session_id;
-  res.send(`Pago exitoso ✅ ID: ${sessionId}`);
+app.get("/success", (_req, res) => {
+  res.sendFile(path.join(__dirname, "public", "success.html"));
 });
 
-app.get("/cancel", (req, res) => {
-  res.send("Pago cancelado ❌");
+app.get("/cancel", (_req, res) => {
+  res.sendFile(path.join(__dirname, "public", "cancel.html"));
 });
 app.listen(PORT, () => {
   console.log(`2K STUDIOS booking app running on port ${PORT}`);
