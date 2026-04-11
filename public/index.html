@@ -86,6 +86,7 @@
       border-radius: 50%;
       object-fit: cover;
       border: 1px solid var(--line);
+      background: #0b0b0b;
     }
 
     .brand-text {
@@ -358,11 +359,12 @@
 
     .gallery-grid img {
       width: 100%;
-      height: 370px;
-      object-fit: cover;
+      max-height: 420px;
+      object-fit: contain;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.05);
       box-shadow: var(--shadow);
+      background: #0b0b0b;
     }
 
     .cta {
@@ -462,15 +464,6 @@
         min-height: 420px;
       }
 
-      .gallery-grid img {
-       width: 100%;
-       max-height: 420px;
-       object-fit: contain;
-       border-radius: 20px;
-       border: 1px solid rgba(255,255,255,0.05);
-       box-shadow: var(--shadow);
-       background: #0b0b0b;
-       }
       .about-copy,
       .cta,
       .contact-card {
@@ -483,7 +476,7 @@
   <header class="topbar">
     <div class="container nav">
       <a href="#" class="brand">
-        <img src="images/logo.png" alt="2K Studios logo" />
+        <img src="images/logo.PNG" alt="2K Studios logo" />
         <div class="brand-text">
           <strong>2K STUDIOS</strong>
           <span>STUDIO DE FOTO</span>
@@ -495,7 +488,7 @@
         <a href="#services">Services</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-        <a href="#booking" class="btn btn-primary">Book Now</a>
+        <a href="/booking.html" class="btn btn-primary">Book Now</a>
       </nav>
     </div>
   </header>
@@ -516,7 +509,7 @@
           </p>
 
           <div class="hero-actions">
-            <a href="#booking" class="btn btn-primary">Reserve Your Session</a>
+            <a href="/booking.html" class="btn btn-primary">Reserve Your Session</a>
             <a href="#gallery" class="btn btn-outline">View Gallery</a>
           </div>
 
@@ -566,7 +559,7 @@
           <p>
             We believe your memories deserve more than simple photos. They deserve artistry.
           </p>
-          <a href="#booking" class="btn btn-primary">Book Your Experience</a>
+          <a href="/booking.html" class="btn btn-primary">Book Your Experience</a>
         </div>
       </div>
     </section>
@@ -589,42 +582,42 @@
             <span class="price">Starts at $2,000</span>
             <h3>Wedding – The Premium</h3>
             <p>8 hours of wedding day coverage, 50 professional edits, 40 prints, and 2 photographers.</p>
-            <a href="#booking">Book this service →</a>
+            <a href="/booking.html">Book this service →</a>
           </article>
 
           <article class="service-card">
             <span class="price">Starts at $1,000</span>
             <h3>Wedding – The Basics</h3>
             <p>5 hours of wedding day coverage, 60 retouched pictures, and 1 photographer.</p>
-            <a href="#booking">Book this service →</a>
+            <a href="/booking.html">Book this service →</a>
           </article>
 
           <article class="service-card">
             <span class="price">Starts at $350</span>
             <h3>4 Outfits Studio Package</h3>
             <p>1 hour, 1 person, 4 outfits, 7 professional edits, and 4 prints.</p>
-            <a href="#booking">Book this service →</a>
+            <a href="/booking.html">Book this service →</a>
           </article>
 
           <article class="service-card">
             <span class="price">Starts at $200</span>
             <h3>Graduation Package</h3>
             <p>30 minutes, 1 person, 5 professional edits, and 3 prints for pickup.</p>
-            <a href="#booking">Book this service →</a>
+            <a href="/booking.html">Book this service →</a>
           </article>
 
           <article class="service-card">
             <span class="price">Starts at $200</span>
             <h3>Beauty / Headshots</h3>
             <p>45 minutes, 1 look, 1 model, and 3 high-end retouched edits.</p>
-            <a href="#booking">Book this service →</a>
+            <a href="/booking.html">Book this service →</a>
           </article>
 
           <article class="service-card">
             <span class="price">Starts at $240</span>
             <h3>Couples Package</h3>
             <p>40 minutes for 2 people with 5 professional edits.</p>
-            <a href="#booking">Book this service →</a>
+            <a href="/booking.html">Book this service →</a>
           </article>
         </div>
       </div>
@@ -650,59 +643,22 @@
           <img src="images/gallery-5.jpeg" alt="2K Studios gallery image 5" />
           <img src="images/gallery-6.jpeg" alt="2K Studios gallery image 6" />
           <img src="images/gallery-7.jpeg" alt="2K Studios gallery image 7" />
-          <img src="images/gallery-8.jpeg" alt="2K Studios gallery image 8" />
         </div>
       </div>
     </section>
 
     <section id="booking">
-      <section id="booking">
-  <div class="container">
-    <h2>Book Your Session</h2>
-
-    <form id="booking-form">
-
-      <label>Service</label>
-      <select id="service">
-        <option value="portrait">Portrait Session</option>
-        <option value="graduation">Graduation</option>
-        <option value="maternity">Maternity</option>
-      </select>
-
-      <label>Name</label>
-      <input type="text" id="name" required />
-
-      <label>Email</label>
-      <input type="email" id="email" required />
-
-      <label>Phone</label>
-      <input type="text" id="phone" required />
-
-      <label>Date</label>
-      <input type="date" id="date" required />
-
-      <label>Time</label>
-      <select id="time">
-        <option value="10:00">10:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="2:00">2:00 PM</option>
-        <option value="4:00">4:00 PM</option>
-      </select>
-
-      <button type="submit">Continue to Deposit</button>
-
-    </form>
-  </div>
-</section>
+      <div class="container">
+        <div class="cta">
+          <div>
             <span class="eyebrow">Booking</span>
             <h2>Ready to reserve your session?</h2>
             <p>
-              Secure your date with a deposit and let’s create something beautiful together.
-              We can connect this button to your booking flow in the next step.
+              Reserve in a separate booking page for a cleaner and easier experience.
             </p>
           </div>
           <div>
-            <a href="/#booking-form" class="btn btn-primary" style="width:100%; margin-bottom:12px;">Start Booking</a>
+            <a href="/booking.html" class="btn btn-primary" style="width:100%; margin-bottom:12px;">Start Booking</a>
             <a href="#contact" class="btn btn-outline" style="width:100%;">Contact First</a>
           </div>
         </div>
@@ -763,32 +719,5 @@
       <p>© 2025 2K STUDIOS. All rights reserved.</p>
     </div>
   </footer>
-  <script>
-document.getElementById("booking-form").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const data = {
-    service: document.getElementById("service").value,
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    date: document.getElementById("date").value,
-    time: document.getElementById("time").value
-  };
-
-  const res = await fetch("/create-checkout-session", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
-
-  const result = await res.json();
-
-  if (result.url) {
-    window.location.href = result.url;
-  } else {
-    alert("Error starting booking");
-  }
-});
-</script>
 </body>
 </html>
