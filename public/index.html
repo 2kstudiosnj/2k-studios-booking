@@ -6,7 +6,7 @@
   <title>2K STUDIOS | Make your memories more beautiful</title>
   <meta
     name="description"
-    content="Luxury photography studio in Woodland Park, NJ. Weddings, portraits, graduation, maternity, family, beauty, branding, and more."
+    content="Luxury photography studio in Woodland Park, NJ and Rochester, NY. Weddings, portraits, graduation, maternity, family, beauty, branding, and more."
   />
   <style>
     :root {
@@ -351,20 +351,157 @@
       font-weight: 700;
     }
 
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .filter-pill {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .filter-pill:hover {
+      color: var(--gold-soft);
+      border-color: var(--gold);
+    }
+
+    .filter-pill.active {
+      background: linear-gradient(135deg, #f3d59f, #c38b38);
+      color: #111;
+      border-color: transparent;
+    }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .gallery-grid img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
+    .g-item {
+      position: relative;
       border-radius: 20px;
+      overflow: hidden;
       border: 1px solid rgba(255,255,255,0.05);
       box-shadow: var(--shadow);
       background: #0b0b0b;
+      cursor: pointer;
+      aspect-ratio: 3 / 4;
+    }
+
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .g-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .g-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 34px 16px 14px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.82));
+      color: #fff;
+      font-size: 0.9rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: 0.3s ease;
+    }
+
+    .g-item:hover .g-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .g-caption strong {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .g-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 20px;
+      border: 1px dashed var(--line);
+      border-radius: 20px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: min(92vw, 900px);
+      max-height: 82vh;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      object-fit: contain;
+    }
+
+    .lb-btn {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
+      color: #fff;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s ease;
+    }
+
+    .lb-btn:hover {
+      background: rgba(214,168,95,0.25);
+    }
+
+    .lb-close { top: 20px; right: 20px; }
+    .lb-prev { left: 18px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 18px; top: 50%; transform: translateY(-50%); }
+
+    .lb-caption {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      max-width: 90vw;
     }
 
     .cta {
@@ -503,7 +640,7 @@
             Make your memories more beautiful
           </h1>
           <p>
-            Premium photography experiences in Woodland Park, New Jersey.
+            Premium photography experiences in Woodland Park, New Jersey — and now in Rochester, New York.
             We create elegant portraits, weddings, graduation sessions,
             maternity shoots, beauty images, branding content, and timeless family memories.
           </p>
@@ -523,8 +660,8 @@
               <span>Portraits, events, beauty, branding</span>
             </div>
             <div class="stat">
-              <strong>NJ</strong>
-              <span>Woodland Park location</span>
+              <strong>2 Zones</strong>
+              <span>New Jersey & Rochester, NY</span>
             </div>
           </div>
         </div>
@@ -555,6 +692,11 @@
           <p>
             From birthdays and beauty portraits to weddings, maternity, graduation, family sessions,
             and product shoots, we help you look your best and preserve your story with intention.
+          </p>
+          <p>
+            We now serve two areas: our studio in Woodland Park, New Jersey, led by photographer Max —
+            and Rochester, New York, led by photographer Dieunel, our growing home for portrait
+            sessions in upstate New York.
           </p>
           <p>
             We believe your memories deserve more than simple photos. They deserve artistry.
@@ -635,14 +777,60 @@
           </p>
         </div>
 
-        <div class="gallery-grid">
-          <img src="images/gallery-1.jpeg" alt="2K Studios gallery image 1" />
-          <img src="images/gallery-2.jpeg" alt="2K Studios gallery image 2" />
-          <img src="images/gallery-3.PNG" alt="2K Studios gallery image 3" />
-          <img src="images/gallery-4.jpeg" alt="2K Studios gallery image 4" />
-          <img src="images/gallery-5.jpeg" alt="2K Studios gallery image 5" />
-          <img src="images/gallery-6.jpeg" alt="2K Studios gallery image 6" />
-          <img src="images/gallery-7.jpeg" alt="2K Studios gallery image 7" />
+        <div class="filter-pills" id="gallery-filters">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="portraits">Portraits</button>
+          <button class="filter-pill" data-filter="weddings">Weddings</button>
+          <button class="filter-pill" data-filter="events">Events</button>
+          <button class="filter-pill" data-filter="beauty">Beauty</button>
+          <button class="filter-pill" data-filter="family">Family</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+          <figure class="g-item" data-category="weddings" data-caption="Elegant bridal session">
+            <img src="images/gallery-1.jpeg" alt="Bridal couple portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Weddings</strong>Elegant bridal session</figcaption>
+          </figure>
+          <figure class="g-item" data-category="beauty" data-caption="Studio beauty look">
+            <img src="images/gallery-5.jpeg" alt="Studio beauty portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Beauty</strong>Studio beauty look</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Outdoor portrait session">
+            <img src="images/gallery-3.PNG" alt="Outdoor portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Outdoor portrait session</figcaption>
+          </figure>
+          <figure class="g-item" data-category="weddings" data-caption="Groom portrait">
+            <img src="images/gallery-2.jpeg" alt="Groom portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Weddings</strong>Groom portrait</figcaption>
+          </figure>
+          <figure class="g-item" data-category="beauty" data-caption="Professional beauty portrait">
+            <img src="images/gallery-6.jpeg" alt="Professional beauty portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Beauty</strong>Professional beauty portrait</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Styled portrait session">
+            <img src="images/gallery-4.jpeg" alt="Styled portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Styled portrait session</figcaption>
+          </figure>
+          <figure class="g-item" data-category="beauty" data-caption="Headshot session">
+            <img src="images/gallery-7.jpeg" alt="Headshot by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Beauty</strong>Headshot session</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Dramatic studio portrait">
+            <img src="images/hero.jpeg" alt="Dramatic studio portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Dramatic studio portrait</figcaption>
+          </figure>
+          <figure class="g-item" data-category="beauty" data-caption="Beauty editorial">
+            <img src="images/about.jpeg" alt="Beauty editorial by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Beauty</strong>Beauty editorial</figcaption>
+          </figure>
+        </div>
+
+        <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+          <button class="lb-btn lb-close" id="lb-close" aria-label="Close">✕</button>
+          <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous image">‹</button>
+          <img id="lb-img" src="" alt="" />
+          <button class="lb-btn lb-next" id="lb-next" aria-label="Next image">›</button>
+          <div class="lb-caption" id="lb-caption"></div>
         </div>
       </div>
     </section>
@@ -679,8 +867,13 @@
 
         <div class="contact-grid">
           <div class="contact-card">
-            <h3>Studio Location</h3>
-            <p>86 Lackawanna Ave<br />Woodland Park, NJ 07424</p>
+            <h3>New Jersey Studio</h3>
+            <p>86 Lackawanna Ave<br />Woodland Park, NJ 07424<br />Photographer: Max</p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Rochester, NY</h3>
+            <p>Now booking portrait sessions in Rochester, New York.<br />Photographer: Dieunel</p>
           </div>
 
           <div class="contact-card">
@@ -719,5 +912,89 @@
       <p>© 2025 2K STUDIOS. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var grid = document.getElementById("gallery-grid");
+      var pills = document.querySelectorAll("#gallery-filters .filter-pill");
+      var items = Array.prototype.slice.call(grid.querySelectorAll(".g-item"));
+      var visibleItems = items.slice();
+
+      function applyFilter(cat) {
+        visibleItems = [];
+        items.forEach(function (item) {
+          var show = cat === "all" || item.getAttribute("data-category") === cat;
+          item.style.display = show ? "" : "none";
+          if (show) visibleItems.push(item);
+        });
+        var empty = document.getElementById("gallery-empty");
+        if (visibleItems.length === 0) {
+          if (!empty) {
+            empty = document.createElement("div");
+            empty.id = "gallery-empty";
+            empty.className = "g-empty";
+            empty.textContent = "New work in this category is coming soon.";
+            grid.appendChild(empty);
+          }
+        } else if (empty) {
+          empty.remove();
+        }
+      }
+
+      pills.forEach(function (pill) {
+        pill.addEventListener("click", function () {
+          pills.forEach(function (p) { p.classList.remove("active"); });
+          pill.classList.add("active");
+          applyFilter(pill.getAttribute("data-filter"));
+        });
+      });
+
+      var lightbox = document.getElementById("lightbox");
+      var lbImg = document.getElementById("lb-img");
+      var lbCaption = document.getElementById("lb-caption");
+      var current = 0;
+
+      function openLightbox(index) {
+        current = index;
+        var img = visibleItems[current].querySelector("img");
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbCaption.textContent = visibleItems[current].getAttribute("data-caption") || img.alt;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function step(dir) {
+        if (!visibleItems.length) return;
+        current = (current + dir + visibleItems.length) % visibleItems.length;
+        openLightbox(current);
+      }
+
+      items.forEach(function (item) {
+        item.addEventListener("click", function () {
+          var idx = visibleItems.indexOf(item);
+          if (idx >= 0) openLightbox(idx);
+        });
+      });
+
+      document.getElementById("lb-close").addEventListener("click", closeLightbox);
+      document.getElementById("lb-prev").addEventListener("click", function (e) { e.stopPropagation(); step(-1); });
+      document.getElementById("lb-next").addEventListener("click", function (e) { e.stopPropagation(); step(1); });
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (!lightbox.classList.contains("open")) return;
+        if (e.key === "Escape") closeLightbox();
+        else if (e.key === "ArrowLeft") step(-1);
+        else if (e.key === "ArrowRight") step(1);
+      });
+    })();
+  </script>
 </body>
 </html>
