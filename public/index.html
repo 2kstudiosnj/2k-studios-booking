@@ -384,18 +384,19 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 3px;
     }
 
     .g-item {
       position: relative;
-      border-radius: 20px;
+      border-radius: 0;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: var(--shadow);
+      border: none;
+      box-shadow: none;
       background: #0b0b0b;
       cursor: pointer;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 1 / 1;
+      margin: 0;
     }
 
     .g-item img {
@@ -567,10 +568,6 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       .hero-card {
         min-height: 500px;
       }
@@ -588,8 +585,7 @@
       }
 
       .hero-stats,
-      .service-grid,
-      .gallery-grid {
+      .service-grid {
         grid-template-columns: 1fr;
       }
 
@@ -787,6 +783,30 @@
         </div>
 
         <div class="gallery-grid" id="gallery-grid">
+          <figure class="g-item" data-category="portraits" data-caption="Dramatic spotlight portrait">
+            <img src="images/session-01.jpg" alt="Dramatic spotlight portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Dramatic spotlight portrait</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Evening gown studio portrait">
+            <img src="images/session-02.jpg" alt="Evening gown studio portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Evening gown studio portrait</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Duo studio session">
+            <img src="images/session-03.jpg" alt="Duo studio portrait session by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Duo studio session</figcaption>
+          </figure>
+          <figure class="g-item" data-category="beauty" data-caption="Fashion beauty look">
+            <img src="images/session-04.jpg" alt="Fashion beauty look by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Beauty</strong>Fashion beauty look</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Spotlight studio portrait">
+            <img src="images/session-05.jpg" alt="Spotlight studio portrait by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Spotlight studio portrait</figcaption>
+          </figure>
+          <figure class="g-item" data-category="portraits" data-caption="Studio portrait in red">
+            <img src="images/session-06.jpg" alt="Studio portrait in red by 2K Studios" loading="lazy" />
+            <figcaption class="g-caption"><strong>Portraits</strong>Studio portrait in red</figcaption>
+          </figure>
           <figure class="g-item" data-category="weddings" data-caption="Elegant bridal session">
             <img src="images/gallery-1.jpeg" alt="Bridal couple portrait by 2K Studios" loading="lazy" />
             <figcaption class="g-caption"><strong>Weddings</strong>Elegant bridal session</figcaption>
