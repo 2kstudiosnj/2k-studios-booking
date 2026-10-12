@@ -332,7 +332,12 @@ app.post("/webhook", async (req, res) => {
               `Name: ${customer_name}`,
               `Email: ${customer_email}`,
               `Phone: ${customer_phone}`,
-              `Stripe Session: ${session.id}`
+              `Stripe Session: ${session.id}`,
+              "",
+              "WHAT TO EXPECT:",
+              "- Your session is reserved. The studio will contact you to plan the details.",
+              "- Please arrive 15 minutes early.",
+              "- Studio contact: +1 (862) 576-0963"
             ].join("\n"),
             start: { dateTime: slot_start_iso },
             end: { dateTime: slot_end_iso },
