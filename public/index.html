@@ -6,7 +6,7 @@
   <title>2K STUDIOS | Make your memories more beautiful</title>
   <meta
     name="description"
-    content="Luxury photography studio in Woodland Park, NJ and Rochester, NY. Weddings, portraits, graduation, maternity, family, beauty, branding, and more."
+    content="Mobile photography in Rochester, NY. 2K Studios brings the studio to your home — weddings, portraits, graduation, couples, beauty & headshots across the Rochester area."
   />
   <style>
     :root {
@@ -320,6 +320,26 @@
       gap: 20px;
     }
 
+    .service-category {
+      margin: 38px 0 18px;
+    }
+
+    .service-category:first-of-type {
+      margin-top: 6px;
+    }
+
+    .service-category h3 {
+      font-size: 1.35rem;
+      color: var(--gold-soft);
+      margin-bottom: 4px;
+    }
+
+    .service-category p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      max-width: 640px;
+    }
+
     .service-card {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
       border: 1px solid rgba(255,255,255,0.05);
@@ -349,6 +369,21 @@
     .service-card a {
       color: var(--gold);
       font-weight: 700;
+    }
+
+    .service-card {
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-photo {
+      margin: -24px -24px 18px;
+    }
+
+    .service-photo img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
     }
 
     .filter-pills {
@@ -603,6 +638,106 @@
         padding: 22px;
       }
     }
+  
+    /* ===== Mike-style presentation additions ===== */
+    .hero-full {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 110px 0 54px;
+      background: #0b0b0b url('images/hero.jpeg') center 30% / cover no-repeat;
+      overflow: hidden;
+    }
+    .hero-full::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.25) 38%, rgba(5,5,5,0.88) 100%);
+    }
+    .hero-full .container { position: relative; z-index: 2; }
+    .hero-full h1 {
+      font-size: clamp(3.4rem, 11vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      text-shadow: 0 10px 40px rgba(0,0,0,0.55);
+    }
+    .hero-full h1 span { color: var(--gold); }
+    .hero-promise {
+      font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+      color: var(--gold-soft);
+      letter-spacing: 0.04em;
+      margin: 14px 0 8px;
+    }
+    .hero-sub { max-width: 620px; color: #e8e2d5; margin-bottom: 26px; }
+    .hero-full .stat { background: rgba(6,6,6,0.66); backdrop-filter: blur(6px); }
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(214,168,95,0.05);
+      padding: 16px 0;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 30s linear infinite;
+    }
+    .marquee-track span {
+      white-space: nowrap;
+      font-size: clamp(1.05rem, 2.4vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--gold-soft);
+      padding-right: 0.6em;
+    }
+    .marquee-track .dot { color: var(--gold); }
+    @keyframes marquee-scroll { to { transform: translateX(-50%); } }
+
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pillar {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 22px;
+      padding: 28px 26px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
+    }
+    .pillar .pillar-kicker {
+      color: var(--gold); font-weight: 700; letter-spacing: 0.22em;
+      font-size: 0.82rem; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .pillar h3 { font-size: 1.45rem; line-height: 1.25; margin-bottom: 16px; }
+    .pipe-list { color: var(--muted); font-size: 0.98rem; line-height: 2; margin-bottom: 22px; }
+    .pipe-list .pipe { color: var(--gold); font-weight: 700; padding: 0 2px; }
+    .pillar a { color: var(--gold); font-weight: 700; margin-top: auto; }
+
+    .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .show-card {
+      position: relative; border-radius: 24px; overflow: hidden;
+      min-height: 430px; box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.05); display: block;
+    }
+    .show-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: transform 0.6s ease;
+    }
+    .show-card:hover img { transform: scale(1.05); }
+    .show-card::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.85) 100%);
+    }
+    .show-copy { position: absolute; left: 26px; right: 26px; bottom: 24px; z-index: 2; }
+    .show-copy .show-cat {
+      color: var(--gold-soft); letter-spacing: 0.22em; text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 6px;
+    }
+    .show-copy .show-line { font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.2; font-weight: 700; }
+
+    @media (max-width: 980px) {
+      .pillars, .showcase-grid { grid-template-columns: 1fr; }
+      .hero-full { min-height: 78vh; }
+    }
   </style>
 </head>
 <body>
@@ -612,14 +747,15 @@
         <img src="images/logo.PNG" alt="2K Studios logo" />
         <div class="brand-text">
           <strong>2K STUDIOS</strong>
-          <span>STUDIO DE FOTO</span>
+          <span>ROCHESTER, NEW YORK</span>
         </div>
       </a>
 
       <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
+        <a href="#what-we-do">What We Do</a>
         <a href="#gallery">Gallery</a>
+        <a href="#services">Packages</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="/booking.html" class="btn btn-primary">Book Now</a>
       </nav>
@@ -627,52 +763,82 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Luxury Portrait & Event Photography</span>
-          <h1>
-            2K <span>STUDIOS</span><br />
-            Make your memories more beautiful
-          </h1>
-          <p>
-            Premium photography experiences in Woodland Park, New Jersey — and now in Rochester, New York.
-            We create elegant portraits, weddings, graduation sessions,
-            maternity shoots, beauty images, branding content, and timeless family memories.
-          </p>
-
-          <div class="hero-actions">
-            <a href="/booking.html" class="btn btn-primary">Reserve Your Session</a>
-            <a href="#gallery" class="btn btn-outline">View Gallery</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <strong>Luxury</strong>
-              <span>Editorial-style photography</span>
-            </div>
-            <div class="stat">
-              <strong>Studio</strong>
-              <span>Portraits, events, beauty, branding</span>
-            </div>
-            <div class="stat">
-              <strong>2 Zones</strong>
-              <span>New Jersey & Rochester, NY</span>
-            </div>
-          </div>
+    <section class="hero-full">
+      <div class="container">
+        <span class="eyebrow">Rochester, NY — Mobile Studio Photography</span>
+        <h1>2K <span>STUDIOS</span></h1>
+        <p class="hero-promise">The best for all your photography needs.</p>
+        <p class="hero-sub">
+          We bring the full studio to your home — professional lighting and an 8×10 backdrop —
+          for luxury portraits, weddings, and events across the Rochester area.
+        </p>
+        <div class="hero-actions">
+          <a href="/booking.html" class="btn btn-primary">Reserve Your Session</a>
+          <a href="#gallery" class="btn btn-outline">View Gallery</a>
         </div>
-
-        <div class="hero-card">
-          <img src="images/hero.jpeg" alt="Featured 2K Studios portrait" />
-          <div class="hero-badge">
-            <strong>Signature Luxury Portraits</strong>
-            <span>Styled sessions designed to make every image unforgettable.</span>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>Luxury</strong>
+            <span>Editorial-style photography</span>
+          </div>
+          <div class="stat">
+            <strong>Mobile Studio</strong>
+            <span>We come to your home — backdrop &amp; lighting included</span>
+          </div>
+          <div class="stat">
+            <strong>Rochester, NY</strong>
+            <span>Serving the greater Rochester area</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about">
+    <div class="marquee " aria-hidden="true">
+      <div class="marquee-track">
+        <span>LUXURY PORTRAITS <span class="dot">•</span> CREATING MEMORIES <span class="dot">•</span> ROCHESTER, NY <span class="dot">•</span> ELEGANT <span class="dot">•</span> PROFESSIONAL <span class="dot">•</span> LUXURY PORTRAITS <span class="dot">•</span> CREATING MEMORIES <span class="dot">•</span> ROCHESTER, NY <span class="dot">•</span> ELEGANT <span class="dot">•</span> PROFESSIONAL <span class="dot">•</span> </span>
+        <span>LUXURY PORTRAITS <span class="dot">•</span> CREATING MEMORIES <span class="dot">•</span> ROCHESTER, NY <span class="dot">•</span> ELEGANT <span class="dot">•</span> PROFESSIONAL <span class="dot">•</span> LUXURY PORTRAITS <span class="dot">•</span> CREATING MEMORIES <span class="dot">•</span> ROCHESTER, NY <span class="dot">•</span> ELEGANT <span class="dot">•</span> PROFESSIONAL <span class="dot">•</span> </span>
+      </div>
+    </div>
+
+    <section id="what-we-do">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">What We Do</span>
+            <h2>Everything your story needs</h2>
+          </div>
+          <p>
+            Photography, event video, and beautiful prints — one team, one standard:
+            elegant images, honest prices, and a studio experience that comes to you.
+          </p>
+        </div>
+
+        <div class="pillars">
+          <article class="pillar">
+            <span class="pillar-kicker">Photography</span>
+            <h3>Portraits with presence.</h3>
+            <p class="pipe-list">Portraits &amp; Beauty <span class="pipe">|</span> Headshots <span class="pipe">|</span> Maternity &amp; Family Sessions <span class="pipe">|</span> Couples Sessions <span class="pipe">|</span> Graduation Sessions <span class="pipe">|</span> Wedding Photography <span class="pipe">|</span> Outdoor &amp; Lifestyle Shoots</p>
+            <a href="#services">See photography packages →</a>
+          </article>
+
+          <article class="pillar">
+            <span class="pillar-kicker">Video &amp; Events</span>
+            <h3>Your event, covered beautifully.</h3>
+            <p class="pipe-list">Event Coverage <span class="pipe">|</span> Wedding &amp; Party Highlights <span class="pipe">|</span> Promotional Videos <span class="pipe">|</span> Social Media Content</p>
+            <a href="/booking.html">Book event coverage →</a>
+          </article>
+
+          <article class="pillar">
+            <span class="pillar-kicker">Prints &amp; Albums</span>
+            <h3>Memories you can hold.</h3>
+            <p class="pipe-list">Prints Included in Select Packages <span class="pipe">|</span> 40-Print Set in Wedding — The Premium <span class="pipe">|</span> Additional Prints on Request</p>
+            <a href="#contact">Ask about prints →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<section id="about">
       <div class="container about">
         <div class="about-photo">
           <img src="images/about.jpeg" alt="2K Studios featured portrait" />
@@ -686,13 +852,15 @@
             Our goal is to turn your moments into polished, beautiful images you will love for years.
           </p>
           <p>
-            From birthdays and beauty portraits to weddings, maternity, graduation, family sessions,
-            and product shoots, we help you look your best and preserve your story with intention.
+            From portraits and beauty sessions to graduation photos, couples shoots, and full
+            wedding-day coverage, we help you look your best and preserve your story with intention.
           </p>
           <p>
-            We now serve two areas: our studio in Woodland Park, New Jersey, led by photographer Max —
-            and Rochester, New York, led by photographer Dieunel, our growing home for portrait
-            sessions in upstate New York.
+            2K Studios is based in Rochester, New York, and works fully mobile. Photographer Dieunel
+            brings a complete studio setup — professional flash lighting and an 8×10 backdrop — to
+            your home, and finishes your images with polished, custom backgrounds in editing.
+            You get the look of a professional studio session without renting one or traveling
+            across town, anywhere in the Rochester area.
           </p>
           <p>
             We believe your memories deserve more than simple photos. They deserve artistry.
@@ -702,66 +870,63 @@
       </div>
     </section>
 
-    <section id="services">
+    <section id="showcases">
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="eyebrow">Services</span>
-            <h2>Popular Packages</h2>
+            <span class="eyebrow">Signature Sessions</span>
+            <h2>Moments we live to capture</h2>
           </div>
           <p>
-            Choose from our most requested studio and event sessions. More packages can be added later,
-            but this gives your clients a clean and professional first impression.
+            Every session is styled around your story. These are the moments our
+            clients ask for again and again.
           </p>
         </div>
 
-        <div class="service-grid">
-          <article class="service-card">
-            <span class="price">Starts at $2,000</span>
-            <h3>Wedding – The Premium</h3>
-            <p>8 hours of wedding day coverage, 50 professional edits, 40 prints, and 2 photographers.</p>
-            <a href="/booking.html">Book this service →</a>
-          </article>
+        <div class="showcase-grid">
+          <a class="show-card" href="/booking.html">
+            <img src="images/gallery-1.jpeg" alt="Wedding photography by 2K Studios" loading="lazy" />
+            <span class="show-copy">
+              <span class="show-cat">Wedding</span>
+              <span class="show-line">A moment to be remembered for a lifetime</span>
+            </span>
+          </a>
 
-          <article class="service-card">
-            <span class="price">Starts at $1,000</span>
-            <h3>Wedding – The Basics</h3>
-            <p>5 hours of wedding day coverage, 60 retouched pictures, and 1 photographer.</p>
-            <a href="/booking.html">Book this service →</a>
-          </article>
+          <a class="show-card" href="/booking.html">
+            <img src="images/portfolio-10.jpg" alt="Birthday and kids portrait by 2K Studios" loading="lazy" />
+            <span class="show-copy">
+              <span class="show-cat">Birthday</span>
+              <span class="show-line">Age by age, watching your story grow</span>
+            </span>
+          </a>
 
-          <article class="service-card">
-            <span class="price">Starts at $350</span>
-            <h3>4 Outfits Studio Package</h3>
-            <p>1 hour, 1 person, 4 outfits, 7 professional edits, and 4 prints.</p>
-            <a href="/booking.html">Book this service →</a>
-          </article>
+          <a class="show-card" href="/booking.html">
+            <img src="images/portfolio-06.jpg" alt="Couples session by 2K Studios" loading="lazy" />
+            <span class="show-copy">
+              <span class="show-cat">Couples</span>
+              <span class="show-line">Together, captured in one perfect frame</span>
+            </span>
+          </a>
 
-          <article class="service-card">
-            <span class="price">Starts at $200</span>
-            <h3>Graduation Package</h3>
-            <p>30 minutes, 1 person, 5 professional edits, and 3 prints for pickup.</p>
-            <a href="/booking.html">Book this service →</a>
-          </article>
-
-          <article class="service-card">
-            <span class="price">Starts at $200</span>
-            <h3>Beauty / Headshots</h3>
-            <p>45 minutes, 1 look, 1 model, and 3 high-end retouched edits.</p>
-            <a href="/booking.html">Book this service →</a>
-          </article>
-
-          <article class="service-card">
-            <span class="price">Starts at $240</span>
-            <h3>Couples Package</h3>
-            <p>40 minutes for 2 people with 5 professional edits.</p>
-            <a href="/booking.html">Book this service →</a>
-          </article>
+          <a class="show-card" href="/booking.html">
+            <img src="images/gallery-7.jpeg" alt="Graduation portrait by 2K Studios" loading="lazy" />
+            <span class="show-copy">
+              <span class="show-cat">Graduation</span>
+              <span class="show-line">You did it — now let&rsquo;s make it unforgettable</span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="gallery">
+    <div class="marquee " aria-hidden="true">
+      <div class="marquee-track">
+        <span>Every Picture Tells a Story <span class="dot">•</span> Every Smile Becomes a Memory <span class="dot">•</span> Creating Visual Stories That Last Forever <span class="dot">•</span> Every Picture Tells a Story <span class="dot">•</span> Every Smile Becomes a Memory <span class="dot">•</span> Creating Visual Stories That Last Forever <span class="dot">•</span> </span>
+        <span>Every Picture Tells a Story <span class="dot">•</span> Every Smile Becomes a Memory <span class="dot">•</span> Creating Visual Stories That Last Forever <span class="dot">•</span> Every Picture Tells a Story <span class="dot">•</span> Every Smile Becomes a Memory <span class="dot">•</span> Creating Visual Stories That Last Forever <span class="dot">•</span> </span>
+      </div>
+    </div>
+
+<section id="gallery">
       <div class="container">
         <div class="section-head">
           <div>
@@ -769,7 +934,8 @@
             <h2>Featured Work</h2>
           </div>
           <p>
-            Show your best work first. Strong images build trust fast and make people want to book.
+            A selection of our recent work — portraits, weddings, and beauty sessions shot
+            and edited by 2K Studios. Tap any photo to see it up close.
           </p>
         </div>
 
@@ -903,14 +1069,201 @@
       </div>
     </section>
 
-    <section id="booking">
+<section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2>Packages & Pricing</h2>
+          </div>
+          <p>
+            Clear packages and honest prices — no surprises. Every portrait session happens at
+            your home in the Rochester area with our mobile studio setup: backdrop, professional
+            lighting, and expert editing included.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-photo"><img src="images/gallery-5.jpeg" alt="Birthday portrait session by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $150</span>
+            <h3>Silver Birthday / Portrait (Economy)</h3>
+            <p>30 minutes, 1 person, 2 outfits, and 3 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Silver%20Birthday%20%2F%20Portrait%20%28Economy%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-06.jpg" alt="Baby shoes detail from a family session by 2K Studios" loading="lazy" style="object-position: 50% 100%;" /></div>
+            <span class="price">Starts at $150</span>
+            <h3>Newborn Package</h3>
+            <p>30 minutes, 3 outfits, and 5 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Newborn%20Package#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-12.jpg" alt="Studio detail shot by 2K Studios" loading="lazy" style="object-position: 50% 100%;" /></div>
+            <span class="price">Starts at $150</span>
+            <h3>Products Shoot (No Models)</h3>
+            <p>40 minutes, no model included, up to 20 different products, and 5 edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Products%20Shoot%20%28No%20Models%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-10.jpg" alt="Kids studio portrait by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $180</span>
+            <h3>Kids Package (Studio)</h3>
+            <p>40 minutes, 3 outfits, and 5 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Kids%20Package%20%28Studio%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/gallery-7.jpeg" alt="Graduation portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $200</span>
+            <h3>Graduation Package</h3>
+            <p>30 minutes, 5 professional edits, and 3 prints.</p>
+            <a href="/booking.html?package=Graduation%20Package#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/about.jpeg" alt="Beauty portrait by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $200</span>
+            <h3>Beauty / Headshots</h3>
+            <p>45 minutes, 1 look, and 3 high-end retouched edits.</p>
+            <a href="/booking.html?package=Beauty%20%2F%20Headshots#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-04.jpg" alt="Dramatic spotlight birthday portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $200</span>
+            <h3>Gold Birthday / Portrait (Economy)</h3>
+            <p>1 person, 3 outfits, and 5 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Gold%20Birthday%20%2F%20Portrait%20%28Economy%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-14.jpg" alt="Model fashion shoot by 2K Studios" loading="lazy" style="object-position: 50% 25%;" /></div>
+            <span class="price">Starts at $200</span>
+            <h3>Products Shoot (With Models)</h3>
+            <p>40 minutes, model included, up to 20 different products, and 5 edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Products%20Shoot%20%28With%20Models%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-06.jpg" alt="Couples session by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $240</span>
+            <h3>Couples Package</h3>
+            <p>40 minutes for 2 people with 5 professional edits.</p>
+            <a href="/booking.html?package=Couples%20Package#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-10.jpg" alt="Kids portrait by 2K Studios" loading="lazy" style="object-position: 50% 5%;" /></div>
+            <span class="price">Starts at $250</span>
+            <h3>Kids Package (Outdoor)</h3>
+            <p>40 minutes outdoors, 3 outfits, and 5 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Kids%20Package%20%28Outdoor%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-07.jpg" alt="Maternity studio portrait by 2K Studios" loading="lazy" style="object-position: 50% 35%;" /></div>
+            <span class="price">Starts at $250</span>
+            <h3>Maternity</h3>
+            <p>40 minutes for 1 to 2 people, 3 outfits, and 5 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Maternity#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-05.jpg" alt="Family maternity session by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $250</span>
+            <h3>Family / Group</h3>
+            <p>40 minutes and 5 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Family%20%2F%20Group#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-02.jpg" alt="Studio fashion portrait by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $350</span>
+            <h3>4 Outfits Studio Package</h3>
+            <p>1 hour, 1 person, 4 outfits, 7 professional edits, and 4 prints.</p>
+            <a href="/booking.html?package=4%20Outfits%20Studio%20Package#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-18.jpg" alt="Elegant seated portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $350</span>
+            <h3>Wedding Court Package</h3>
+            <p>1 hour, 10 professional edits, and 5 prints — $15 each additional edit.</p>
+            <a href="/booking.html?package=Wedding%20Court%20Package#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-01.jpg" alt="Outdoor fashion portrait by 2K Studios" loading="lazy" style="object-position: 50% 25%;" /></div>
+            <span class="price">Starts at $350</span>
+            <h3>3 Outfit Package (Outdoor)</h3>
+            <p>1 hour outdoors for 1 person, 3 outfits, and 7 professional edits — $15 each additional edit, no prints; travel fee applies.</p>
+            <a href="/booking.html?package=3%20Outfit%20Package%20%28Outdoor%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/gallery-4.jpeg" alt="Outdoor portrait session by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $350</span>
+            <h3>Graduation Package (Outdoor)</h3>
+            <p>3 outfits and 7 professional edits — $15 each additional edit, no prints.</p>
+            <a href="/booking.html?package=Graduation%20Package%20%28Outdoor%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-11.jpg" alt="Cowboy hat themed portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="price">Starts at $350</span>
+            <h3>Birthday / Portrait (Economy, Outdoor)</h3>
+            <p>1 hour outdoors for 1 person, 3 outfits, and 5 professional edits — $15 each additional edit, no prints; travel fee applies.</p>
+            <a href="/booking.html?package=Birthday%20%2F%20Portrait%20%28Economy%2C%20Outdoor%29#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/gallery-1.jpeg" alt="Live event performance photographed by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $350</span>
+            <h3>Events Package</h3>
+            <p>Event coverage — details confirmed when you book.</p>
+            <a href="/booking.html?package=Events%20Package#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/gallery-3.PNG" alt="Bridal portrait session by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $1,000</span>
+            <h3>Wedding – The Basics</h3>
+            <p>5 hours of wedding day coverage, 60 retouched pictures, and 1 photographer.</p>
+            <a href="/booking.html?package=Wedding%20-%20The%20Basics#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/portfolio-17.jpg" alt="Dramatic spotlight portrait by 2K Studios" loading="lazy" style="object-position: 50% 25%;" /></div>
+            <span class="price">Starts at $1,500</span>
+            <h3>Wedding – The Essential</h3>
+            <p>8 hours of wedding day coverage, up to 400 photos, 80 edited pictures (light and color correction), and 1 photographer.</p>
+            <a href="/booking.html?package=Wedding%20-%20The%20Essential#packages">Book this service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-photo"><img src="images/gallery-2.jpeg" alt="Elegant bridal session by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="price">Starts at $2,000</span>
+            <h3>Wedding – The Premium</h3>
+            <p>8 hours of wedding day coverage, 50 professional edits, 40 prints, and 1 photographer.</p>
+            <a href="/booking.html?package=Wedding%20-%20The%20Premium#packages">Book this service →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<section id="booking">
       <div class="container">
         <div class="cta">
           <div>
             <span class="eyebrow">Booking</span>
             <h2>Ready to reserve your session?</h2>
             <p>
-              Reserve in a separate booking page for a cleaner and easier experience.
+              Pick your package, choose a date and time, and secure your session with a
+              deposit — the whole booking takes about a minute.
             </p>
           </div>
           <div>
@@ -921,27 +1274,24 @@
       </div>
     </section>
 
-    <section id="contact">
+<section id="contact">
       <div class="container">
         <div class="section-head">
           <div>
             <span class="eyebrow">Contact</span>
-            <h2>Visit or reach out</h2>
+            <h2>Get in touch</h2>
           </div>
           <p>
-            Keep your contact information clear so clients can message you fast from Instagram, TikTok, or Google.
+            Call, text, or message us on Instagram or TikTok — tell us about your session
+            and we will reply fast with availability.
           </p>
         </div>
 
         <div class="contact-grid">
           <div class="contact-card">
-            <h3>New Jersey Studio</h3>
-            <p>86 Lackawanna Ave<br />Woodland Park, NJ 07424<br />Photographer: Max</p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Rochester, NY</h3>
-            <p>Now booking portrait sessions in Rochester, New York.<br />Photographer: Dieunel</p>
+            <h3>Rochester, NY — Mobile Service</h3>
+            <p>We come to you anywhere in the Rochester, NY area. Portrait sessions are done
+            at your home with our portable studio backdrop and professional lighting.<br />Photographer: Dieunel</p>
           </div>
 
           <div class="contact-card">
@@ -977,7 +1327,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2025 2K STUDIOS. All rights reserved.</p>
+      <p>© 2025 2K STUDIOS — Rochester, NY. All rights reserved.</p>
     </div>
   </footer>
 
@@ -1071,5 +1421,17 @@
 .wa-float:active{transform:scale(.96)}
 </style>
 <a class="wa-float" href="https://wa.me/18625760963?text=Hi%202K%20Studios!%20I%27d%20like%20to%20book%20a%20session." target="_blank" rel="noopener" aria-label="Chat with 2K Studios on WhatsApp"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
+  <script>
+    (function () {
+      document.querySelectorAll(".service-card").forEach(function (card) {
+        var link = card.querySelector('a[href*="booking.html"]');
+        if (!link) return;
+        card.addEventListener("click", function (e) {
+          if (e.target.closest("a")) return;
+          window.location.href = link.href;
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
