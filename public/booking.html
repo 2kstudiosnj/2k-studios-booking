@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Your Session | 2K STUDIOS</title>
+  <title>Select a Package | 2K STUDIOS</title>
   <meta
     name="description"
-    content="Reserve your 2K Studios session and continue to deposit checkout."
+    content="Select a 2K Studios package and reserve your session in Rochester, NY — mobile studio photography at your home — and continue to deposit checkout."
   />
   <style>
     :root {
       --bg: #080808;
+      --bg-soft: #111111;
       --card: #141414;
       --gold: #d6a85f;
       --gold-soft: #f0d29a;
@@ -19,13 +20,17 @@
       --line: rgba(214, 168, 95, 0.22);
       --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
       --radius: 22px;
-      --max: 760px;
+      --max: 1200px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -38,24 +43,36 @@
       min-height: 100vh;
     }
 
-    .wrap {
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
       width: min(92%, var(--max));
       margin: 0 auto;
-      padding: 34px 0 70px;
     }
 
-    .top {
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 8, 8, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .top a {
-      color: var(--gold-soft);
-      text-decoration: none;
-      font-weight: 700;
+      padding: 16px 0;
     }
 
     .brand {
@@ -65,33 +82,269 @@
     }
 
     .brand img {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
       border: 1px solid var(--line);
       background: #0b0b0b;
     }
 
-    .brand strong {
-      letter-spacing: 0.12em;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+    }
+
+    .brand-text span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .card {
+    .nav-links a:hover {
+      color: var(--gold-soft);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f3d59f, #c38b38);
+      color: #111;
+      box-shadow: 0 10px 24px rgba(195, 139, 56, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-soft);
+    }
+
+    main {
+      padding: 56px 0 10px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold-soft);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .page-intro {
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .step-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .step-badge {
+      color: #111;
+      background: linear-gradient(135deg, #f3d59f, #c38b38);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .step-head h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 26px;
+    }
+
+    .pkg-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .pkg-card:hover {
+      border-color: var(--line);
+      transform: translateY(-3px);
+    }
+
+    .pkg-card.selected {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), var(--shadow);
+    }
+
+    .pkg-card {
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .pkg-photo {
+      margin: -26px -26px 20px;
+    }
+
+    .pkg-photo img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .pkg-cat {
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pkg-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .pkg-price {
+      color: var(--gold-soft);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .pkg-duration {
+      color: var(--gold-soft);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .pkg-includes {
+      list-style: none;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .pkg-includes li {
+      padding: 5px 0 5px 22px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .pkg-includes li:last-child {
+      border-bottom: none;
+    }
+
+    .pkg-includes li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .pkg-select {
+      margin-top: auto;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .pkg-select:hover {
+      border-color: var(--gold);
+      color: var(--gold-soft);
+    }
+
+    .pkg-card.selected .pkg-select {
+      background: linear-gradient(135deg, #f3d59f, #c38b38);
+      color: #111;
+      border-color: transparent;
+      box-shadow: 0 10px 24px rgba(195, 139, 56, 0.28);
+    }
+
+    .booking-card {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
       border: 1px solid rgba(255,255,255,0.05);
       border-radius: 22px;
       padding: 28px;
       box-shadow: var(--shadow);
+      max-width: 760px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: clamp(2rem, 4vw, 3rem);
+    .booking-card.active {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), var(--shadow);
     }
 
-    .intro {
+    .selected-summary {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 16px;
+      color: var(--gold-soft);
+      font-weight: 700;
+      margin-bottom: 22px;
+      background: rgba(214, 168, 95, 0.06);
+    }
+
+    .form-intro {
       color: var(--muted);
       margin-bottom: 22px;
     }
@@ -115,7 +368,7 @@
 
     input,
     select,
-    button {
+    button[type="submit"] {
       width: 100%;
       padding: 14px 16px;
       border-radius: 14px;
@@ -135,7 +388,7 @@
       border-color: var(--gold);
     }
 
-    button {
+    button[type="submit"] {
       background: linear-gradient(135deg, #f3d59f, #c38b38);
       color: #111;
       font-weight: 700;
@@ -144,7 +397,7 @@
       box-shadow: 0 10px 24px rgba(195, 139, 56, 0.28);
     }
 
-    button:hover {
+    button[type="submit"]:hover {
       transform: translateY(-1px);
     }
 
@@ -160,99 +413,598 @@
       margin-top: 8px;
     }
 
+    footer {
+      margin-top: 70px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 34px 0 44px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .footer-grid h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-grid p {
+      color: var(--muted);
+    }
+
+    .footer-grid a {
+      color: var(--gold-soft);
+    }
+
+    .footer-grid a:hover {
+      color: var(--gold);
+    }
+
+    .footer-base {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1000px) {
+      .pkg-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 700px) {
+      .pkg-grid,
       .grid-2,
-      .top {
+      .footer-grid {
         grid-template-columns: 1fr;
-        display: grid;
       }
 
-      .card {
+      .nav-links a:not(.btn) {
+        display: none;
+      }
+
+      .booking-card {
         padding: 22px;
+      }
+
+      .step-head {
+        flex-wrap: wrap;
       }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
-      <a href="/">← Back to Home</a>
-      <div class="brand">
+  <header class="topbar">
+    <div class="container nav">
+      <a href="/" class="brand">
         <img src="images/logo.PNG" alt="2K Studios logo" />
-        <strong>2K STUDIOS</strong>
-      </div>
-    </div>
+        <div class="brand-text">
+          <strong>2K STUDIOS</strong>
+          <span>ROCHESTER, NEW YORK</span>
+        </div>
+      </a>
 
-    <div class="card">
-      <h1>Book Your Session</h1>
-      <p class="intro">
-        Fill out your information below to continue to the deposit and secure your date.
+      <nav class="nav-links">
+        <a href="/#what-we-do">What We Do</a>
+        <a href="/#gallery">Gallery</a>
+        <a href="/#services">Packages</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <a href="/" class="btn btn-outline">← Back to Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <span class="eyebrow">Booking</span>
+      <h1>Select a Package</h1>
+      <p class="page-intro">
+        Pick the package that fits your session, then complete your details to continue
+        to the deposit and secure your date. Portrait sessions take place at your home
+        in the Rochester, NY area with our mobile studio setup — backdrop and
+        professional lighting included.
       </p>
 
-      <form id="booking-form">
-        <div>
-          <label for="service">Service</label>
-          <select id="service" required>
-            <option value="">Select a service</option>
-            <option value="Wedding - The Premium">Wedding - The Premium</option>
-            <option value="Wedding - The Basics">Wedding - The Basics</option>
-            <option value="4 Outfits Studio Package">4 Outfits Studio Package</option>
-            <option value="Graduation Package">Graduation Package</option>
-            <option value="Beauty / Headshots">Beauty / Headshots</option>
-            <option value="Couples Package">Couples Package</option>
-            <option value="Portrait Session">Portrait Session</option>
-            <option value="Family Session">Family Session</option>
-            <option value="Maternity Session">Maternity Session</option>
-          </select>
+      <section id="packages">
+        <div class="step-head">
+          <span class="step-badge">STEP 1</span>
+          <h2>Choose your package</h2>
         </div>
 
-        <div class="grid-2">
-          <div>
-            <label for="name">Full Name</label>
-            <input type="text" id="name" required />
-          </div>
+        <div class="pkg-grid">
+          <article class="pkg-card" data-service="Silver Birthday / Portrait (Economy)" data-price="$150">
+            <div class="pkg-photo"><img src="images/gallery-5.jpeg" alt="Birthday portrait session by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Birthday &amp; Kids</span>
+            <h3>Silver Birthday / Portrait (Economy)</h3>
+            <p class="pkg-price">Starts at $150</p>
+            <p class="pkg-duration">30 minutes</p>
+            <ul class="pkg-includes">
+              <li>1 person</li>
+              <li>2 outfits</li>
+              <li>3 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
 
-          <div>
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" required />
-          </div>
+          <article class="pkg-card" data-service="Newborn Package" data-price="$150">
+            <div class="pkg-photo"><img src="images/portfolio-06.jpg" alt="Baby shoes detail from a family session by 2K Studios" loading="lazy" style="object-position: 50% 100%;" /></div>
+            <span class="pkg-cat">Birthday &amp; Kids</span>
+            <h3>Newborn Package</h3>
+            <p class="pkg-price">Starts at $150</p>
+            <p class="pkg-duration">30 minutes</p>
+            <ul class="pkg-includes">
+              <li>3 outfits</li>
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Products Shoot (No Models)" data-price="$150">
+            <div class="pkg-photo"><img src="images/portfolio-12.jpg" alt="Studio detail shot by 2K Studios" loading="lazy" style="object-position: 50% 100%;" /></div>
+            <span class="pkg-cat">Products &amp; Events</span>
+            <h3>Products Shoot (No Models)</h3>
+            <p class="pkg-price">Starts at $150</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>No model included</li>
+              <li>Up to 20 different products</li>
+              <li>5 edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Kids Package (Studio)" data-price="$180">
+            <div class="pkg-photo"><img src="images/portfolio-10.jpg" alt="Kids studio portrait by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Birthday &amp; Kids</span>
+            <h3>Kids Package (Studio)</h3>
+            <p class="pkg-price">Starts at $180</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>3 outfits</li>
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Graduation Package" data-price="$200">
+            <div class="pkg-photo"><img src="images/gallery-7.jpeg" alt="Graduation portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Graduation</span>
+            <h3>Graduation Package</h3>
+            <p class="pkg-price">Starts at $200</p>
+            <p class="pkg-duration">30 minutes</p>
+            <ul class="pkg-includes">
+              <li>5 professional edits</li>
+              <li>3 prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Beauty / Headshots" data-price="$200">
+            <div class="pkg-photo"><img src="images/about.jpeg" alt="Beauty portrait by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Portraits</span>
+            <h3>Beauty / Headshots</h3>
+            <p class="pkg-price">Starts at $200</p>
+            <p class="pkg-duration">45 minutes</p>
+            <ul class="pkg-includes">
+              <li>1 look</li>
+              <li>3 high-end retouched edits</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Gold Birthday / Portrait (Economy)" data-price="$200">
+            <div class="pkg-photo"><img src="images/portfolio-04.jpg" alt="Dramatic spotlight birthday portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Birthday &amp; Kids</span>
+            <h3>Gold Birthday / Portrait (Economy)</h3>
+            <p class="pkg-price">Starts at $200</p>
+            <ul class="pkg-includes">
+              <li>1 person</li>
+              <li>3 outfits</li>
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Products Shoot (With Models)" data-price="$200">
+            <div class="pkg-photo"><img src="images/portfolio-14.jpg" alt="Model fashion shoot by 2K Studios" loading="lazy" style="object-position: 50% 25%;" /></div>
+            <span class="pkg-cat">Products &amp; Events</span>
+            <h3>Products Shoot (With Models)</h3>
+            <p class="pkg-price">Starts at $200</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>Model included</li>
+              <li>Up to 20 different products</li>
+              <li>5 edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Couples Package" data-price="$240">
+            <div class="pkg-photo"><img src="images/portfolio-06.jpg" alt="Couples session by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Couples &amp; Family</span>
+            <h3>Couples Package</h3>
+            <p class="pkg-price">Starts at $240</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>2 people</li>
+              <li>5 professional edits</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Kids Package (Outdoor)" data-price="$250">
+            <div class="pkg-photo"><img src="images/portfolio-10.jpg" alt="Kids portrait by 2K Studios" loading="lazy" style="object-position: 50% 5%;" /></div>
+            <span class="pkg-cat">Birthday &amp; Kids</span>
+            <h3>Kids Package (Outdoor)</h3>
+            <p class="pkg-price">Starts at $250</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>3 outfits</li>
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Maternity" data-price="$250">
+            <div class="pkg-photo"><img src="images/portfolio-07.jpg" alt="Maternity studio portrait by 2K Studios" loading="lazy" style="object-position: 50% 35%;" /></div>
+            <span class="pkg-cat">Family &amp; Maternity</span>
+            <h3>Maternity</h3>
+            <p class="pkg-price">Starts at $250</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>1 to 2 people</li>
+              <li>3 outfits</li>
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Family / Group" data-price="$250">
+            <div class="pkg-photo"><img src="images/portfolio-05.jpg" alt="Family maternity session by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Family &amp; Maternity</span>
+            <h3>Family / Group</h3>
+            <p class="pkg-price">Starts at $250</p>
+            <p class="pkg-duration">40 minutes</p>
+            <ul class="pkg-includes">
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="4 Outfits Studio Package" data-price="$350">
+            <div class="pkg-photo"><img src="images/portfolio-02.jpg" alt="Studio fashion portrait by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Portraits</span>
+            <h3>4 Outfits Studio Package</h3>
+            <p class="pkg-price">Starts at $350</p>
+            <p class="pkg-duration">1 hour</p>
+            <ul class="pkg-includes">
+              <li>1 person</li>
+              <li>4 outfits</li>
+              <li>7 professional edits</li>
+              <li>4 prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Wedding Court Package" data-price="$350">
+            <div class="pkg-photo"><img src="images/portfolio-18.jpg" alt="Elegant seated portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Weddings</span>
+            <h3>Wedding Court Package</h3>
+            <p class="pkg-price">Starts at $350</p>
+            <p class="pkg-duration">1 hour</p>
+            <ul class="pkg-includes">
+              <li>10 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>5 prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="3 Outfit Package (Outdoor)" data-price="$350">
+            <div class="pkg-photo"><img src="images/portfolio-01.jpg" alt="Outdoor fashion portrait by 2K Studios" loading="lazy" style="object-position: 50% 25%;" /></div>
+            <span class="pkg-cat">Portraits</span>
+            <h3>3 Outfit Package (Outdoor)</h3>
+            <p class="pkg-price">Starts at $350</p>
+            <p class="pkg-duration">1 hour</p>
+            <ul class="pkg-includes">
+              <li>1 person</li>
+              <li>3 outfits</li>
+              <li>7 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>Travel fee applies for outdoor</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Graduation Package (Outdoor)" data-price="$350">
+            <div class="pkg-photo"><img src="images/gallery-4.jpeg" alt="Outdoor portrait session by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Graduation</span>
+            <h3>Graduation Package (Outdoor)</h3>
+            <p class="pkg-price">Starts at $350</p>
+            <ul class="pkg-includes">
+              <li>3 outfits</li>
+              <li>7 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Birthday / Portrait (Economy, Outdoor)" data-price="$350">
+            <div class="pkg-photo"><img src="images/portfolio-11.jpg" alt="Cowboy hat themed portrait by 2K Studios" loading="lazy" style="object-position: 50% 20%;" /></div>
+            <span class="pkg-cat">Birthday &amp; Kids</span>
+            <h3>Birthday / Portrait (Economy, Outdoor)</h3>
+            <p class="pkg-price">Starts at $350</p>
+            <p class="pkg-duration">1 hour</p>
+            <ul class="pkg-includes">
+              <li>1 person</li>
+              <li>3 outfits</li>
+              <li>5 professional edits</li>
+              <li>$15 each additional edit</li>
+              <li>Travel fee applies for outdoor</li>
+              <li>No prints</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Events Package" data-price="$350">
+            <div class="pkg-photo"><img src="images/gallery-1.jpeg" alt="Live event performance photographed by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Events</span>
+            <h3>Events Package</h3>
+            <p class="pkg-price">Starts at $350</p>
+            <ul class="pkg-includes">
+              <li>Event coverage — details confirmed when you book</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Wedding - The Basics" data-price="$1,000">
+            <div class="pkg-photo"><img src="images/gallery-3.PNG" alt="Bridal portrait session by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Weddings &amp; Events</span>
+            <h3>Wedding - The Basics</h3>
+            <p class="pkg-price">Starts at $1,000</p>
+            <p class="pkg-duration">5 hours</p>
+            <ul class="pkg-includes">
+              <li>Wedding day coverage</li>
+              <li>60 retouched pictures</li>
+              <li>1 photographer</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Wedding - The Essential" data-price="$1,500">
+            <div class="pkg-photo"><img src="images/portfolio-17.jpg" alt="Dramatic spotlight portrait by 2K Studios" loading="lazy" style="object-position: 50% 25%;" /></div>
+            <span class="pkg-cat">Weddings &amp; Events</span>
+            <h3>Wedding - The Essential</h3>
+            <p class="pkg-price">Starts at $1,500</p>
+            <p class="pkg-duration">8 hours</p>
+            <ul class="pkg-includes">
+              <li>Wedding day coverage</li>
+              <li>Up to 400 photos</li>
+              <li>80 edited pictures (light and color correction)</li>
+              <li>1 photographer</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+
+          <article class="pkg-card" data-service="Wedding - The Premium" data-price="$2,000">
+            <div class="pkg-photo"><img src="images/gallery-2.jpeg" alt="Elegant bridal session by 2K Studios" loading="lazy" style="object-position: 50% 30%;" /></div>
+            <span class="pkg-cat">Weddings &amp; Events</span>
+            <h3>Wedding - The Premium</h3>
+            <p class="pkg-price">Starts at $2,000</p>
+            <p class="pkg-duration">8 hours</p>
+            <ul class="pkg-includes">
+              <li>Wedding day coverage</li>
+              <li>50 professional edits</li>
+              <li>40 prints</li>
+              <li>1 photographer</li>
+            </ul>
+            <button type="button" class="pkg-select">Select &amp; Book</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="step2">
+        <div class="step-head">
+          <span class="step-badge">STEP 2</span>
+          <h2>Your details</h2>
         </div>
 
-        <div class="grid-2">
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" required />
-          </div>
+        <div class="booking-card" id="booking-card">
+          <div class="selected-summary" id="selected-summary">No package selected yet — choose a package above, or pick a service in the form below.</div>
+          <p class="form-intro">
+            Fill out your information below to continue to the deposit and secure your date.
+          </p>
 
-          <div>
-            <label for="date">Date</label>
-            <input type="date" id="date" required />
-          </div>
+          <form id="booking-form">
+            <div>
+              <label for="service">Service</label>
+              <select id="service" required>
+                <option value="">Select a service</option>
+                  <option value="Silver Birthday / Portrait (Economy)">Silver Birthday / Portrait (Economy)</option>
+                  <option value="Newborn Package">Newborn Package</option>
+                  <option value="Products Shoot (No Models)">Products Shoot (No Models)</option>
+                  <option value="Kids Package (Studio)">Kids Package (Studio)</option>
+                  <option value="Graduation Package">Graduation Package</option>
+                  <option value="Beauty / Headshots">Beauty / Headshots</option>
+                  <option value="Gold Birthday / Portrait (Economy)">Gold Birthday / Portrait (Economy)</option>
+                  <option value="Products Shoot (With Models)">Products Shoot (With Models)</option>
+                  <option value="Couples Package">Couples Package</option>
+                  <option value="Kids Package (Outdoor)">Kids Package (Outdoor)</option>
+                  <option value="Maternity">Maternity</option>
+                  <option value="Family / Group">Family / Group</option>
+                  <option value="4 Outfits Studio Package">4 Outfits Studio Package</option>
+                  <option value="Wedding Court Package">Wedding Court Package</option>
+                  <option value="3 Outfit Package (Outdoor)">3 Outfit Package (Outdoor)</option>
+                  <option value="Graduation Package (Outdoor)">Graduation Package (Outdoor)</option>
+                  <option value="Birthday / Portrait (Economy, Outdoor)">Birthday / Portrait (Economy, Outdoor)</option>
+                  <option value="Events Package">Events Package</option>
+                  <option value="Wedding - The Basics">Wedding - The Basics</option>
+                  <option value="Wedding - The Essential">Wedding - The Essential</option>
+                  <option value="Wedding - The Premium">Wedding - The Premium</option>
+                </select>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required />
+              </div>
+
+              <div>
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" required />
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" required />
+              </div>
+
+              <div>
+                <label for="date">Date</label>
+                <input type="date" id="date" required />
+              </div>
+            </div>
+
+            <div>
+              <label for="time">Time</label>
+              <select id="time" required>
+                <option value="">Select a time</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">1:00 PM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="17:00">5:00 PM</option>
+              </select>
+            </div>
+
+            <button type="submit">Continue to Deposit</button>
+            <div id="status"></div>
+            <p class="policy">
+              A deposit is required to secure your appointment.
+            </p>
+          </form>
         </div>
-
-        <div>
-          <label for="time">Time</label>
-          <select id="time" required>
-            <option value="">Select a time</option>
-            <option value="10:00">10:00 AM</option>
-            <option value="11:00">11:00 AM</option>
-            <option value="12:00">12:00 PM</option>
-            <option value="13:00">1:00 PM</option>
-            <option value="14:00">2:00 PM</option>
-            <option value="15:00">3:00 PM</option>
-            <option value="16:00">4:00 PM</option>
-            <option value="17:00">5:00 PM</option>
-          </select>
-        </div>
-
-        <button type="submit">Continue to Deposit</button>
-        <div id="status"></div>
-        <p class="policy">
-          A deposit is required to secure your appointment.
-        </p>
-      </form>
+      </section>
     </div>
-  </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Rochester, NY — Mobile Service</h3>
+          <p>We come to you anywhere in the Rochester, NY area. Portrait sessions are done
+          at your home with our portable studio backdrop and professional lighting.<br />Photographer: Dieunel</p>
+        </div>
+
+        <div>
+          <h3>Phone Numbers</h3>
+          <p>
+            <a href="tel:+18625760963">+1 (862) 576-0963</a><br />
+            <a href="tel:+19082444037">+1 (908) 244-4037</a><br />
+            <a href="tel:+18622795679">+1 (862) 279-5679</a>
+          </p>
+        </div>
+      </div>
+      <p class="footer-base">© 2025 2K STUDIOS — Rochester, NY. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var serviceSelect = document.getElementById("service");
+      var summary = document.getElementById("selected-summary");
+      var bookingCard = document.getElementById("booking-card");
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".pkg-card"));
+      var DEFAULT_SUMMARY = "No package selected yet \u2014 choose a package above, or pick a service in the form below.";
+
+      function clearSelection() {
+        cards.forEach(function (card) {
+          card.classList.remove("selected");
+          card.querySelector(".pkg-select").textContent = "Select & Book";
+        });
+      }
+
+      function showStep2() {
+        bookingCard.classList.add("active");
+        document.getElementById("step2").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function choosePackage(card, scroll) {
+        clearSelection();
+        card.classList.add("selected");
+        card.querySelector(".pkg-select").textContent = "Selected \u2713";
+        serviceSelect.value = card.getAttribute("data-service");
+        summary.textContent = "Package: " + card.getAttribute("data-service") + " \u2014 " + card.getAttribute("data-price");
+        if (scroll) showStep2();
+      }
+
+      cards.forEach(function (card) {
+        card.querySelector(".pkg-select").addEventListener("click", function () {
+          choosePackage(card, true);
+        });
+      });
+
+      cards.forEach(function (card) {
+        card.addEventListener("click", function (e) {
+          if (e.target.closest(".pkg-select")) return;
+          choosePackage(card, true);
+        });
+      });
+
+      serviceSelect.addEventListener("change", function () {
+        var value = serviceSelect.value;
+        var matched = false;
+        cards.forEach(function (card) {
+          if (card.getAttribute("data-service") === value) {
+            choosePackage(card, false);
+            matched = true;
+          }
+        });
+        if (!matched) {
+          clearSelection();
+          summary.textContent = DEFAULT_SUMMARY;
+          bookingCard.classList.remove("active");
+        }
+      });
+
+      var param = new URLSearchParams(window.location.search).get("package");
+      if (param) {
+        cards.forEach(function (card) {
+          if (card.getAttribute("data-service") === param) choosePackage(card, false);
+        });
+      }
+    })();
+  </script>
 
   <script>
     document.getElementById("booking-form").addEventListener("submit", async function (e) {
