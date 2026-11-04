@@ -158,6 +158,7 @@ async function sendBookingEmail({
   customer_name,
   customer_email,
   customer_phone,
+  service,
   slot_start_iso,
   slot_end_iso,
   stripe_session_id
@@ -178,6 +179,7 @@ async function sendBookingEmail({
     `Client: ${customer_name || "—"}`,
     `Email: ${customer_email || "—"}`,
     `Phone: ${customer_phone || "—"}`,
+    `Service: ${service || "—"}`,
     `When: ${when}`,
     `Deposit paid: $${deposit} USD`,
     `Stripe session: ${stripe_session_id || "—"}`,
@@ -229,7 +231,7 @@ app.get("/api/availability", async (req, res) => {
 
 app.post("/api/create-checkout-session", async (req, res) => {
   try {
-    const { name, email, phone, date, slotStartISO, slotEndISO } = req.body;
+    const { name, email, phone, date, slotStartISO, slotEndISO, service } = req.body;
 
     if (!name || !email || !phone || !date || !slotStartISO || !slotEndISO) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -255,6 +257,7 @@ app.post("/api/create-checkout-session", async (req, res) => {
         customer_name: name,
         customer_email: email,
         customer_phone: phone,
+        service: service || "",
         date,
         slot_start_iso: slotStartISO,
         slot_end_iso: slotEndISO
@@ -307,6 +310,7 @@ app.post("/webhook", async (req, res) => {
       customer_name,
       customer_email,
       customer_phone,
+      service,
       date,
       slot_start_iso,
       slot_end_iso
@@ -332,6 +336,7 @@ app.post("/webhook", async (req, res) => {
               `Name: ${customer_name}`,
               `Email: ${customer_email}`,
               `Phone: ${customer_phone}`,
+              `Service: ${service || "—"}`,
               `Stripe Session: ${session.id}`,
               "",
               "WHAT TO EXPECT:",
@@ -357,6 +362,7 @@ app.post("/webhook", async (req, res) => {
       customer_name,
       customer_email,
       customer_phone,
+      service,
       slot_start_iso,
       slot_end_iso,
       stripe_session_id: session.id
